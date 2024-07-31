@@ -4,13 +4,19 @@
   <div class="col">
     <!-- search box -->
     <shared-search-box
-      placeholder="Buscar por country"
-      (onValue)="searchByCountry($event)"
-    ></shared-search-box>
+    placeholder="Buscar por country"
+     (onTuboDeAgua)="searchByCountry($event)"
+     [initialValue]="initialValue"
+     ></shared-search-box>
   </div>
 </div>
 <div class="row">
   <div class="col">
-    <countries-table [countries]="countries"></countries-table>
+    <shared-loading-spinner *ngIf="isLoading; else showTable;"></shared-loading-spinner>
+    <ng-template #showTable>
+      <countries-table [countries]="countries"></countries-table>
+    </ng-template>
+
+    <mono-flag></mono-flag>
   </div>
 </div>
