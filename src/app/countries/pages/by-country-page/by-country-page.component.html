@@ -12,10 +12,12 @@
 </div>
 <div class="row">
   <div class="col">
-    <shared-loading-spinner *ngIf="isLoading; else showTable;"></shared-loading-spinner>
-    <ng-template #showTable>
+    @if(isLoading){
+      <shared-loading-spinner></shared-loading-spinner>
+    }
+    @else{
       <countries-table [countries]="countries"></countries-table>
-    </ng-template>
+    }
 
     <mono-flag></mono-flag>
   </div>
